@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="search-div">
+    <button mat-raised-button (click)="onCreate()">
+      <mat-icon>add</mat-icon>Create
+    </button>
+    <mat-form-field class="search-form-field" floatLabel="never">
+      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()" >
+      <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey" (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="mat-elevation-z8">
+    <mat-table   [dataSource]="dataSource"  matSort>
+      <ng-container matColumnDef="id" >
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>ID</mat-header-cell>
+        <mat-cell  *matCellDef="let element">{{element.id}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="fullName">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>FullName</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.user.fullName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="bloodGroup">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>BG</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.bloodGroup}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="bloodUnit">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>BU</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.bloodUnit}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="remarks">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Remarks</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.remarks}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="mobile">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Mobile</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="hospitalName">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Hospital Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.hospitalName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="district">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>District</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.district}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="municipality">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Municipality</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.municipality}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="localAddress">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>LAddress</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.localAddress}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="requestDate">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Request Date</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.requestDate}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Status</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.status}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="isActive">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>Active</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.isActive}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="onView(row)"><mat-icon>visibility</mat-icon></button>
+          <button mat-icon-button color="accent" (click)="onAcceptRequest(row.id)"><mat-icon>favorite</mat-icon></button>
+          <button mat-icon-button *ngIf="adminBoard" color="primary" (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
+          <button mat-icon-button *ngIf="adminBoard" color="warn" (click)="onDelete(row.id)"><mat-icon >delete_outline</mat-icon></button>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="loading">
+        <mat-footer-cell *matFooterCellDef colspan="6">
+          Loading data...
+        </mat-footer-cell>
+      </ng-container>
+      <ng-container matColumnDef="noData">
+        <mat-footer-cell *matFooterCellDef colspan="6">
+          No data.
+        </mat-footer-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource!==null}"></mat-footer-row>
+      <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(dataSource!==null && dataSource.data.length===0)}"></mat-footer-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+  </div>
+  
+</div>
+

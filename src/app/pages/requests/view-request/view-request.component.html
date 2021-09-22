@@ -1,0 +1,69 @@
+<mat-toolbar>
+    <span>Request Details</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+  </mat-toolbar>
+  <form [formGroup]="requestService.form" class="normal-form">
+    <mat-grid-list cols="2" rowHeight="400px">
+      <mat-grid-tile>
+        <div class="controles-container">
+          <input type="hidden" formControlName="id">
+          <mat-form-field>
+            <input formControlName="bloodGroup" matInput placeholder="bloodGroup*" readonly>
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="bloodUnit" matInput placeholder="Blood Unit*" readonly>
+            <mat-error>This field is mandatary</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea formControlName="remarks" matInput placeholder="Remarks*" rows="3" readonly></textarea>
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="mobile" matInput placeholder="Mobile*" readonly>
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="hospitalName" matInput placeholder="hospitalName*" readonly>
+            <mat-error>This field is mandatary</mat-error>
+          </mat-form-field>
+          
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="controles-container">
+          
+            
+          
+          <mat-form-field>
+            <input formControlName="district" matInput placeholder="District*" readonly>
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="municipality" matInput placeholder="Municipality*" readonly>
+            <mat-error>This field is mandatary</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="localAddress" matInput placeholder="localAddress*" readonly>
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+          <mat-form-field formGroupName="user">
+            <input formControlName="fullName" matInput placeholder="Full Name*" readonly>
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+          <mat-form-field formGroupName="user">
+            <input formControlName="email" matInput placeholder="Email*" readonly>
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="status" matInput placeholder="Status*" >
+            <mat-error>This field is mandatary</mat-error>
+          </mat-form-field>
+  
+          
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+  

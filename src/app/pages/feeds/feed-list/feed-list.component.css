@@ -1,0 +1,21 @@
+.mat-column-id {
+    flex: 0 0 5%;
+}
+.mat-column-actions {
+    flex: 0 0 12%;
+}
+.mat-column-postDate {
+    flex: 0 0 10%;
+}
+.mat-column-mobile {
+    flex: 0 0 10%;
+}
+.mat-column-clientFullName {
+    flex: 0 0 8%;
+}
+.mat-column-feedTitle {
+    flex: 0 0 20%;
+}
+.mat-column-feedDescription {
+    flex: 0 0 30%;
+}

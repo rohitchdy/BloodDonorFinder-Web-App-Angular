@@ -1,0 +1,28 @@
+<mat-toolbar>
+  <span>{{feedService.form.controls['id'].value?"Modify Feed":"New Feed"}}</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form [formGroup]="feedService.form" class="normal-form" (submit)="onSubmit()">
+  <mat-grid-list cols="2" rowHeight="300px" >
+    <mat-grid-tile>
+      <div class="controles-container">
+        <input type="hidden" formControlName="id">
+        <mat-form-field>
+          <input formControlName="feedTitle" matInput placeholder="Feed Title*">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea formControlName="feedDescription" matInput placeholder="Feed Description*" rows="5"></textarea>
+          <mat-error>This field is mandatary</mat-error>
+        </mat-form-field>
+
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" [disabled]="feedService.form.invalid">Submit</button>
+          
+          <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

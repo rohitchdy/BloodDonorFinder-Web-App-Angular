@@ -1,0 +1,18 @@
+.mat-column-actions {
+    flex: 0 0 18%;
+}
+.mat-column-id {
+    flex: 0 0 5%;
+}
+.mat-column-bloodGroup {
+    flex: 0 0 3%;
+}
+.mat-column-bloodUnit {
+    flex: 0 0 3%;
+}
+.mat-column-status {
+    flex: 0 0 6%;
+}
+.mat-column-actions{
+    align-items: center ;
+}

@@ -1,0 +1,82 @@
+<mat-toolbar>
+    <span>{{requestService.form.controls['id'].value?"Modify Request":"New Request"}}</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+  </mat-toolbar>
+  <form [formGroup]="requestService.form" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols="2" rowHeight="400px">
+      <mat-grid-tile>
+        <div class="controles-container">
+          <input type="hidden" formControlName="id">
+          <!-- <mat-form-field>
+            <input formControlName="bloodGroup" matInput placeholder="bloodGroup*">
+            <mat-error>This field is mandatory.</mat-error>
+            <mat-select>
+              <mat-option value="A+">A+</mat-option>
+              <mat-option value="A-">A-</mat-option>
+              <mat-option value="B+">B+</mat-option>
+              <mat-option value="B-">B-</mat-option>
+              <mat-option value="AB+">AB+</mat-option>
+              <mat-option value="AB-">AB-</mat-option>
+              <mat-option value="O+">O+</mat-option>
+              <mat-option value="O-">O-</mat-option>
+
+            </mat-select>
+          </mat-form-field> -->
+
+           <mat-radio-group formControlName="bloodGroup">
+            <mat-radio-button value="A+">A+</mat-radio-button>
+            <mat-radio-button value="A-">A-</mat-radio-button>
+            <mat-radio-button value="B+">B+</mat-radio-button>
+            <mat-radio-button value="B-">B-</mat-radio-button>
+            <mat-radio-button value="O+">O+</mat-radio-button>
+            <mat-radio-button value="O-">O-</mat-radio-button>
+            <mat-radio-button value="AB+">AB+</mat-radio-button>
+            <mat-radio-button value="AB-">AB-</mat-radio-button>
+          </mat-radio-group>
+
+          <mat-form-field>
+            <input formControlName="bloodUnit" matInput placeholder="Blood Unit*">
+            <mat-error>This field is mandatary</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea formControlName="remarks" matInput placeholder="Remarks*" rows="5"></textarea>
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="mobile" matInput placeholder="Mobile*" >
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="controles-container">
+          <mat-form-field>
+            <input formControlName="hospitalName" matInput placeholder="HospitalName*">
+            <mat-error>This field is mandatary</mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <input formControlName="district" matInput placeholder="District*">
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="municipality" matInput placeholder="Municipality*" >
+            <mat-error>This field is mandatary</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="localAddress" matInput placeholder="LocalAddress*">
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+
+
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="requestService.form.invalid">Submit</button>
+
+            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>

@@ -1,0 +1,257 @@
+<div class="container center-div">
+  
+    <div class="card card-container">
+      <!-- <img
+        id="profile-img"
+        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        class="profile-img-card"
+      /> -->
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+  
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="fullName"
+          [(ngModel)]="form.fullName"
+          required
+          minlength="3"
+          maxlength="20"
+          #fullName="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && fullName.invalid">
+          <div *ngIf="fullName.errors!.required">Name is required</div>
+          <div *ngIf="username.errors!.minlength">
+            Username must be at least 3 characters
+          </div>
+          <div *ngIf="fullName.errors?.maxlength">
+            Name must be at most 20 characters
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="form-group">
+        <label for="mobile">Mobile</label>
+        <input
+          type="text"
+          class="form-control"
+          name="mobile"
+          [(ngModel)]="form.mobile"
+          required
+          minlength="10"
+          maxlength="10"
+          #mobile="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+          <div *ngIf="mobile.errors!.required">Mobile No. is required</div>
+          <div *ngIf="mobile.errors!.minlength">
+            Mobile No. must be at least 10 characters
+          </div>
+          <div *ngIf="username.errors?.maxlength">
+            Mobile No. must be at least 10 characters
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input
+          type="date"
+          class="form-control"
+          name="dob"
+          [(ngModel)]="form.dob"
+          required
+          
+          #dob="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && dob.invalid">
+          <div *ngIf="dob.errors!.required">Date is required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select class="custom-select custom-select-lg " id="gender" name="gender"
+                  [(ngModel)]="form.gender" #gender="ngModel" 
+                  required>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Gender</option>
+              <!-- [ngValue]=1  -- Its only supports sting but value supports string value -->
+          </select>
+        <div class="alert-danger" *ngIf="f.submitted && gender.invalid">
+          <div *ngIf="gender.errors!.required">Gender is required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="bloodGroup">BloodGroup</label>
+        <select class="custom-select custom-select-lg " id="bloodGroup" name="bloodGroup" 
+                [(ngModel)]="form.bloodGroup" #bloodGroup="ngModel"
+                required>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+  
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="district">District</label>
+        <input
+          type="text"
+          class="form-control"
+          name="district"
+          [(ngModel)]="form.district"
+          required
+          minlength="3"
+          maxlength="20"
+          #district="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && district.invalid">
+          <div *ngIf="district.errors!.required">Username is required</div>
+          <div *ngIf="district.errors!.minlength">
+            District must be at least 3 characters
+          </div>
+          <div *ngIf="district.errors?.maxlength">
+            District must be at most 20 characters
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="municipality">Municipality</label>
+        <input
+          type="text"
+          class="form-control"
+          name="muicipality"
+          [(ngModel)]="form.municipality"
+          required
+          minlength="3"
+          maxlength="20"
+          #municipality="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && municipality.invalid">
+          <div *ngIf="municipality.errors!.required">Municipality is required</div>
+          <div *ngIf="municipality.errors!.minlength">
+            Municipality must be at least 3 characters
+          </div>
+          <div *ngIf="municipality.errors?.maxlength">
+            Municipality must be at most 20 characters
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="localAddress">LocalAddress</label>
+        <input
+          type="text"
+          class="form-control"
+          name="localAddress"
+          [(ngModel)]="form.localAddress"
+          required
+          minlength="3"
+          maxlength="20"
+          #localAddress="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && localAddress.invalid">
+          <div *ngIf="localAddress.errors!.required">LocalAddress is required</div>
+          <div *ngIf="localAddress.errors!.minlength">
+            LocalAddress must be at least 3 characters
+          </div>
+          <div *ngIf="localAddress.errors?.maxlength">
+            LocalAddress must be at most 20 characters
+          </div>
+        </div>
+      </div>
+  
+      
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="form.username"
+            required
+            minlength="3"
+            maxlength="20"
+            #username="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+            <div *ngIf="username.errors!.required">Username is required</div>
+            <div *ngIf="username.errors!.minlength">
+              Username must be at least 3 characters
+            </div>
+            <div *ngIf="username.errors?.maxlength">
+              Username must be at most 20 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="form.email"
+            required
+            email
+            #email="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+            <div *ngIf="email.errors!.required">Email is required</div>
+            <div *ngIf="email.errors!.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="8"
+            #password="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+            <div *ngIf="password.errors?.required">Password is required</div>
+            <div *ngIf="password.errors?.minlength">
+              Password must be at least 8 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Sign Up</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your registration is successful!
+      </div>
+    </div>
+ 
+
+</div>
+
+

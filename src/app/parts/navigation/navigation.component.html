@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/home">
+
+      Blood Donor Finder
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav" routerLinkActive="active">
+
+      <div class="navbar-nav" *ngIf="isLoggedIn" >
+          <a  class="nav-item nav-link "
+             routerLink="/pending-request">
+              Pending Requests
+          </a>
+          <a  class="nav-item nav-link "
+             routerLink="/requests" *ngIf="adminBoard">
+              Requests
+          </a>
+          <a  class="nav-item nav-link"
+            routerLink="feeds">
+              Feeds
+          </a>
+          <a  class="nav-item nav-link"
+            routerLink="donations" *ngIf="adminBoard">
+              Donations
+          </a>
+          <a  class="nav-item nav-link"
+            routerLink="user-list" *ngIf="adminBoard">
+              Users
+          </a>
+          <a  class="nav-item nav-link"
+            routerLink="my-request">
+              My Requests
+          </a>
+          <a  class="nav-item nav-link"
+            routerLink="my-pending-donation">
+              My Pending Donations
+          </a>
+
+          <a  class="nav-item nav-link"
+            routerLink="my-donation">
+              My Donations
+          </a>
+
+          
+
+          
+
+          
+
+          
+
+          
+
+      </div>
+
+      <div class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+
+              <a class="nav-item nav-link " routerLink="/login">
+                  Signin
+              </a>
+              <a class="nav-item nav-link " routerLink="register">
+                Signup
+            </a>
+
+      </div>
+      <div class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+        <a class="nav-item nav-link " routerLink="/profile">{{username}}
+        </a>
+
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+
+</div>
+  </div>
+</nav>
+
